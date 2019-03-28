@@ -1,0 +1,32 @@
+--- airflow.cfg	2019-03-29 23:12:38.000000000 +0100
++++ airflow.cfg	2019-03-29 23:25:35.000000000 +0100
+@@ -240,6 +240,7 @@
+ # Set to true to turn on authentication:
+ # https://airflow.apache.org/security.html#web-authentication
+ authenticate = False
++auth_backend = airflow.contrib.auth.backends.password_auth
+ 
+ # Filter the list of dags by owner name (requires authentication to be enabled)
+ filter_by_owner = False
+@@ -275,7 +276,7 @@
+ page_size = 100
+ 
+ # Use FAB-based webserver with RBAC feature
+-rbac = False
++rbac = True
+ 
+ # Define the color of navigation bar
+ navbar_color = #007A87
+@@ -647,4 +648,10 @@
+ #     POSTGRES_PASSWORD = airflow-secret:postgres_credentials
+ #
+ # Additionally you may override worker airflow settings with the AIRFLOW__<SECTION>__<KEY>
+-# formatting as supported by airflow normally.
+\ No newline at end of file
++# formatting as supported by airflow normally.
++
++[gitlab_plugin]
++repository_url = https://example.com/repository
++token = 1234
++dag = tutorial
++

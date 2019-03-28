@@ -1,0 +1,20 @@
+<h2>Gitlab Webhooks</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th class="col-md-1 col-lg-1 col-sm-1">Repository URL</th>
+            <th class="col-md-1 col-lg-1 col-sm-1">Has Secret Token</th>
+            <th class="col-md-1 col-lg-1 col-sm-1">DAG ID</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for row in plugin_config %}
+    <tr>
+        <td>{{row.repository_url}}</td>
+        <td>{{'Yes' if row.token else 'No'}}</td>
+        <td>{{row.dag_id}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
