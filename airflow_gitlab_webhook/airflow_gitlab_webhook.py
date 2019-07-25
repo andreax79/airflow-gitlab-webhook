@@ -1,7 +1,7 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 __author__ = 'Andrea Bonomi <andrea.bonomi@italiaonline.it>'
-__version__ = '1.0.0'
+__version__ = '1.0.1'
 
 import os
 import os.path
@@ -27,9 +27,13 @@ def get_plugin_config():
     " Return the plugin configuration "
     config = []
     i = 0
+    # Iterate over the configurations
     while True:
-        suffix = str(i) if i != 0 else ''
-        if not configuration.has_option(CONFIG_SECTION, 'REPOSITORY_URL' + suffix):
+        suffix = str(i) if i != 0 else '' # the first configuration doesn't have a suffix
+        try:
+            if not configuration.has_option(CONFIG_SECTION, 'REPOSITORY_URL' + suffix):
+                break
+        except: # backports.configparser.NoSectionError and friends
             break
         repository_url = configuration.get(CONFIG_SECTION, 'REPOSITORY_URL' + suffix)
         dag = configuration.get(CONFIG_SECTION, 'DAG' + suffix)
