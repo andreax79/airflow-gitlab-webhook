@@ -105,5 +105,11 @@ venv.bak/
 /_build
 
 .idea
-/test/
 
+/test_virtualenv/bin
+/test_virtualenv/include
+/test_virtualenv/logs
+/test_virtualenv/share
+/test_virtualenv/airflow.cfg
+/test_virtualenv/airflow.db
+/test_virtualenv/unittests.cfg
